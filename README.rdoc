@@ -13,7 +13,7 @@ By creating partials in your app directory you can override how results are disp
 
 The default template can be overridden by creating the following file:
 
-		app/views/search/_default_display_results.html.haml
+	app/views/search/_default_display_results.html.haml
 	
 It is suggested to create a template for each model:
 
@@ -25,8 +25,8 @@ It is suggested to create a template for each model:
 
 For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
 
-		config.gem 'sunspot', :lib => 'sunspot'
-		config.gem 'sunspot_rails', :lib => 'sunspot/rails'
+	config.gem 'sunspot', :lib => 'sunspot'
+	config.gem 'sunspot_rails', :lib => 'sunspot/rails'
 
 Install the gems with:
 
@@ -34,21 +34,21 @@ Install the gems with:
 
 If you are using an older version of Rails that doesn’t support plugins-as-gems, install the gems manually and install the plugin:
 
-		sudo gem install sunspot sunspot_rails --source=http://gems.github.com
-		
-		script/plugin install git://github.com/outoftime/sunspot_rails.git
+	sudo gem install sunspot sunspot_rails --source=http://gems.github.com
+	
+	script/plugin install git://github.com/outoftime/sunspot_rails.git
 
 Generate the file config/sunspot.yml:
 
-		script/generate sunspot
+	script/generate sunspot
 
 Require the rake tasks in your Rakefile:
 
-		require 'sunspot/rails/tasks'
+	require 'sunspot/rails/tasks'
 	
 To start up a Solr instance, issue the following:
 
-		rake sunspot:solr:start
+	rake sunspot:solr:start
 
 Note that using the built-in Solr instance packaged with Sunspot is great for development, but is not recommended for production. See the Sunspot documentation for more information.
 
@@ -56,37 +56,37 @@ Note that using the built-in Solr instance packaged with Sunspot is great for de
 
 For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
 
-		config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+	config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
 
 Install the gems with:
 
-		rake gems:install
+	rake gems:install
 
 You may need to add the following at the end of config/environment.rb:
 
-		require "will_paginate"
+	require "will_paginate"
 
 === HAML
 
 HAML is used to replace the .erb templates:
 
-		gem install haml
-		
-		haml --rails path/to/rails/app
+	gem install haml
+	
+	haml --rails path/to/rails/app
 
 == Setup
 
 install plugin:
 
-		./script/plugin install git://github.com/ychaker/sunspot_admin.git
+	./script/plugin install git://github.com/ychaker/sunspot_admin.git
 
 run migrations:
 
-		rake sunspotadmin:db:migrate:up
+	rake sunspotadmin:db:migrate:up
 
 add the routes to your config/routes.rb:
 
-		map.sunspot_admin
+	map.sunspot_admin
 	
 
 == Copyright
