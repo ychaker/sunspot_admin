@@ -17,7 +17,7 @@ The default template can be overridden by creating the following file:
 	
 It is suggested to create a template for each model:
 
-		app/views/search/_display_results_<model_name_lowercase_and_singular>.html.haml
+	app/views/search/_display_results_<model_name_lowercase_and_singular>.html.haml
 
 == Dependencies
 
