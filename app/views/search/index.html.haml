@@ -1,0 +1,7 @@
+.forms
+	= render :partial => 'search_forms'
+.results
+	- @search.each_hit_with_result do |hit, item|
+		= display_result item, hit
+.pagination
+	= will_paginate(@search.results)

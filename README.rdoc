@@ -1,0 +1,94 @@
+= SunspotAdmin
+
+== Introduction 
+
+This plugin is created to make managing Solr Search using the Sunspot gem easier. The purpose of this plugin is to provide an admin interface for non-technical people and allow for:
+
+* Selecting which application models/attributes to index through a simple interface
+* Manual reindexing
+
+== Search Results
+
+By creating partials in your app directory you can override how results are displayed.
+
+The default template can be overridden by creating the following file:
+
+		app/views/search/_default_display_results.html.haml
+	
+It is suggested to create a template for each model:
+
+		app/views/search/_display_results_<model_name_lowercase_and_singular>.html.haml
+
+== Dependencies
+
+=== Sunspot
+
+For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
+
+		config.gem 'sunspot', :lib => 'sunspot'
+		config.gem 'sunspot_rails', :lib => 'sunspot/rails'
+
+Install the gems with:
+
+	rake gems:install
+
+If you are using an older version of Rails that doesn’t support plugins-as-gems, install the gems manually and install the plugin:
+
+		sudo gem install sunspot sunspot_rails --source=http://gems.github.com
+		
+		script/plugin install git://github.com/outoftime/sunspot_rails.git
+
+Generate the file config/sunspot.yml:
+
+		script/generate sunspot
+
+Require the rake tasks in your Rakefile:
+
+		require 'sunspot/rails/tasks'
+	
+To start up a Solr instance, issue the following:
+
+		rake sunspot:solr:start
+
+Note that using the built-in Solr instance packaged with Sunspot is great for development, but is not recommended for production. See the Sunspot documentation for more information.
+
+=== Will_Paginate
+
+For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
+
+		config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+
+Install the gems with:
+
+		rake gems:install
+
+You may need to add the following at the end of config/environment.rb:
+
+		require "will_paginate"
+
+=== HAML
+
+HAML is used to replace the .erb templates:
+
+		gem install haml
+		
+		haml --rails path/to/rails/app
+
+== Setup
+
+install plugin:
+
+		./script/plugin install git://github.com/ychaker/sunspot_admin.git
+
+run migrations:
+
+		rake sunspotadmin:db:migrate:up
+
+add the routes to your config/routes.rb:
+
+		map.sunspot_admin
+	
+
+== Copyright
+
+Copyright (c) 2010 Youssef Chaker, released under the MIT license

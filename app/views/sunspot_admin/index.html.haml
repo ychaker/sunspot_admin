@@ -1,0 +1,73 @@
+%h2= "Sunspot Solr Admin"
+
+.status
+	%p
+		- if !@ready
+			Status: Search is not enabled! Make sure you have selected attributes to index. If you have, click
+			= link_to 'here', :action => :make_searchable, :controller => :sunspot_admin 
+			to enable search.
+		- elsif !@unprepared.blank? && @unprepared.count > 0
+			Status: You have added searchable items but have not made then indexable. Click 
+			= link_to 'here', :action => :make_searchable, :controller => :sunspot_admin 
+			to make them indexable, or click 
+			= link_to 'here', :action => :make_searchable_and_reindex, :controller => :sunspot_admin 
+			to make them indexable and then reindex your database. 
+		- elsif !@prepared.blank? && @prepared.count > 0
+			Status: You have fields ready to be indexed. Click 
+			= link_to 'here', :action => :reindex, :controller => :sunspot_admin 
+			to reindex your database.
+		- elsif !@indexed.blank? && @indexed.count > 0
+			Status: Everything is cool over here! Start 
+			= link_to 'searching...', :action => :index, :controller => :search
+		- else
+			Status: No attributes have been selected to be indexed. Please add from the list below
+	%p
+		To reindex your database, click 
+		= link_to 'here', :action => :make_searchable_and_reindex, :controller => :sunspot_admin 
+	
+%hr
+
+.searchable-items
+	%h3= "Added but not prepared"
+	- if !@unprepared.blank? && @unprepared.count > 0
+		- @unprepared.each do |item|
+			.item
+				== #{item.model} : #{item.field.humanize} : #{item.field_type}
+				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
+	- else 
+		.item
+			None found
+	%h3= "Added and prepared"
+	- if !@prepared.blank? && @prepared.count > 0
+		- @prepared.each do |item|
+			.item
+				== #{item.model} : #{item.field.humanize} : #{item.field_type}
+				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
+	- else 
+		.item
+			None found
+	%h3= "Indexed"
+	- if !@indexed.blank? && @indexed.count > 0
+		- @indexed.each do |item|
+			.item
+				== #{item.model} : #{item.field.humanize} : #{item.field_type} 
+				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
+	- else 
+		.item
+			None found
+
+%hr
+
+- unless @models.blank?
+	.models
+		- @models.each_pair do |name, value|
+			.model
+				%h3= name
+				- value[:attributes].each_pair do |attribute, type|
+					- form_tag :action => :add_searchable_item do
+						= hidden_field_tag 'attribute[model]', name
+						= hidden_field_tag 'attribute[field]', attribute
+						= hidden_field_tag 'attribute[field_type]', type
+						= hidden_field_tag 'attribute[status]', SearchableItem::NOTPREPARED
+						== #{attribute.humanize} : #{type}
+						= submit_tag 'Add'

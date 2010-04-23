@@ -1,0 +1,9 @@
+.result
+	%h2= search_item_link item, item_title(item)
+	.result-type
+		= "Type: #{item.class}"
+	- unless hit.score.blank?
+		.hit-score
+			= "Hit Score: (#{h hit.score})"
+	.more-link
+		= search_item_link item

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README.rdoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README.rdoc</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>README.rdoc
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Thu Apr 22 21:01:15 -0400 2010</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>SunspotAdmin</h1>
+<h2>Introduction</h2>
+<p>
+This plugin is created to make managing Solr Search using the Sunspot gem
+easier. The purpose of this plugin is to provide an admin interface for
+non-technical people and allow for:
+</p>
+<ul>
+<li>Selecting which application models/attributes to index through a simple
+interface
+
+</li>
+<li>Manual reindexing
+
+</li>
+</ul>
+<h2>Search Results</h2>
+<p>
+By creating partials in your app directory you can override how results are
+displayed.
+</p>
+<p>
+The default template can be overridden by creating the following file:
+</p>
+<pre>
+                app/views/search/_default_display_results.html.haml
+</pre>
+<p>
+It is suggested to create a template for each model:
+</p>
+<pre>
+                app/views/search/_display_results_&lt;model_name_lowercase_and_singular&gt;.html.haml
+</pre>
+<h2>Dependencies</h2>
+<h3>Sunspot</h3>
+<p>
+For recent versions of Rails, In your project’s config/environment.rb,
+add the following gem dependencies:
+</p>
+<pre>
+                config.gem 'sunspot', :lib =&gt; 'sunspot'
+                config.gem 'sunspot_rails', :lib =&gt; 'sunspot/rails'
+</pre>
+<p>
+Install the gems with:
+</p>
+<pre>
+        rake gems:install
+</pre>
+<p>
+If you are using an older version of Rails that doesn’t support
+plugins-as-gems, install the gems manually and install the plugin:
+</p>
+<pre>
+                sudo gem install sunspot sunspot_rails --source=http://gems.github.com
+
+                script/plugin install git://github.com/outoftime/sunspot_rails.git
+</pre>
+<p>
+Generate the file config/sunspot.yml:
+</p>
+<pre>
+                script/generate sunspot
+</pre>
+<p>
+Require the rake tasks in your Rakefile:
+</p>
+<pre>
+                require 'sunspot/rails/tasks'
+</pre>
+<p>
+To start up a Solr instance, issue the following:
+</p>
+<pre>
+                rake sunspot:solr:start
+</pre>
+<p>
+Note that using the built-in Solr instance packaged with Sunspot is great
+for development, but is not recommended for production. See the Sunspot
+documentation for more information.
+</p>
+<h3>Will_Paginate</h3>
+<p>
+For recent versions of Rails, In your project’s config/environment.rb,
+add the following gem dependencies:
+</p>
+<pre>
+                config.gem 'will_paginate', :version =&gt; '~&gt; 2.3.11', :source =&gt; 'http://gemcutter.org'
+</pre>
+<p>
+Install the gems with:
+</p>
+<pre>
+                rake gems:install
+</pre>
+<p>
+You may need to add the following at the end of config/environment.rb:
+</p>
+<pre>
+                require &quot;will_paginate&quot;
+</pre>
+<h3>HAML</h3>
+<p>
+HAML is used to replace the .erb templates:
+</p>
+<pre>
+                gem install haml
+
+                haml --rails path/to/rails/app
+</pre>
+<h2>Setup</h2>
+<p>
+install plugin:
+</p>
+<pre>
+                ./script/plugin install git://github.com/ychaker/sunspot_admin.git
+</pre>
+<p>
+run migrations:
+</p>
+<pre>
+                rake sunspotadmin:db:migrate:up
+</pre>
+<p>
+add the routes to your config/routes.rb:
+</p>
+<pre>
+                map.sunspot_admin
+</pre>
+<h2>Copyright</h2>
+<p>
+Copyright (c) 2010 Youssef Chaker, released under the MIT license
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

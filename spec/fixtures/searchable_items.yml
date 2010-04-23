@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  model: User
+  field: name
+  field_type: string
+
+two:
+  model: Post
+  field: title
+  field_type: string
+
+three:
+  model: Post
+  field: body
+  field_type: text
