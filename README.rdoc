@@ -88,6 +88,24 @@ add the routes to your config/routes.rb:
 
 	map.sunspot_admin
 	
+== Usage
+
+=== Admin
+
+go to:
+
+	/sunspot_admin
+
+to add attributes to be indexed. Once models and attributes have been added to be indexed, click the 'reindex' link to reindex your database. I have separated the steps required to get a model indexed in order to allow the admin to add multiple models and fields and then indexing them all at once. Depending on the size of your database, indexing entries make take a while.
+
+=== Search
+
+go to:
+
+	/search
+	
+to start searching indexed documents. Make sure you have enabled search for at least one model and field from the admin interface.
+
 ==Version
 
 0.1
