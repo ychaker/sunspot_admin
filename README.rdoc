@@ -88,6 +88,9 @@ add the routes to your config/routes.rb:
 
 	map.sunspot_admin
 	
+==Version
+
+0.1
 
 == Copyright
 
