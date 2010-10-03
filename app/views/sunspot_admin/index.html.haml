@@ -32,7 +32,7 @@
 	- if !@unprepared.blank? && @unprepared.count > 0
 		- @unprepared.each do |item|
 			.item
-				== #{item.model} : #{item.field.humanize} : #{item.field_type}
+				== #{item.searchable_model} : #{item.searchable_field.humanize} : #{item.searchable_field_type}
 				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
 	- else 
 		.item
@@ -41,7 +41,7 @@
 	- if !@prepared.blank? && @prepared.count > 0
 		- @prepared.each do |item|
 			.item
-				== #{item.model} : #{item.field.humanize} : #{item.field_type}
+				== #{item.searchable_model} : #{item.searchable_field.humanize} : #{item.searchable_field_type}
 				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
 	- else 
 		.item
@@ -50,7 +50,7 @@
 	- if !@indexed.blank? && @indexed.count > 0
 		- @indexed.each do |item|
 			.item
-				== #{item.model} : #{item.field.humanize} : #{item.field_type} 
+				== #{item.searchable_model} : #{item.searchable_field.humanize} : #{item.searchable_field_type} 
 				= link_to 'remove', :action => :remove_searchable_item, :controller => :sunspot_admin, :id => item.id
 	- else 
 		.item
@@ -64,10 +64,10 @@
 			.model
 				%h3= name
 				- value[:attributes].each_pair do |attribute, type|
-					- form_tag :action => :add_searchable_item do
-						= hidden_field_tag 'attribute[model]', name
-						= hidden_field_tag 'attribute[field]', attribute
-						= hidden_field_tag 'attribute[field_type]', type
-						= hidden_field_tag 'attribute[status]', SearchableItem::NOTPREPARED
+					= form_tag :action => :add_searchable_item do
+						= hidden_field_tag 'attribute[searchable_model]', name
+						= hidden_field_tag 'attribute[searchable_field]', attribute
+						= hidden_field_tag 'attribute[searchable_field_type]', type
+						= hidden_field_tag 'attribute[searchable_status]', SearchableItem::NOTPREPARED
 						== #{attribute.humanize} : #{type}
 						= submit_tag 'Add'

@@ -1,0 +1,29 @@
+<h1>Listing dummies</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Age</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dummies.each do |dummy| %>
+  <tr>
+    <td><%= dummy.name %></td>
+    <td><%= dummy.description %></td>
+    <td><%= dummy.age %></td>
+    <td><%= dummy.date %></td>
+    <td><%= link_to 'Show', dummy %></td>
+    <td><%= link_to 'Edit', edit_dummy_path(dummy) %></td>
+    <td><%= link_to 'Destroy', dummy, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dummy', new_dummy_path %>

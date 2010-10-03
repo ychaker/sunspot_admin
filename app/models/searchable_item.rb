@@ -1,5 +1,5 @@
 class SearchableItem < ActiveRecord::Base
-  validates_uniqueness_of(:field, :scope => :model)
+  validates_uniqueness_of(:searchable_field, :scope => :searchable_model)
   
   NOTPREPARED = 1
   PREPARED    = 2
@@ -11,9 +11,9 @@ class SearchableItem < ActiveRecord::Base
     all = SearchableItem.find :all, *conditions
     @grouped = {}
     all.each do |item|
-      @grouped[item.model] =  @grouped[item.model].blank? ? {} : @grouped[item.model]
-      @grouped[item.model][item.field_type] = @grouped[item.model][item.field_type].blank? ? [] : @grouped[item.model][item.field_type]
-      @grouped[item.model][item.field_type] << item
+      @grouped[item.searchable_model] =  @grouped[item.searchable_model].blank? ? {} : @grouped[item.searchable_model]
+      @grouped[item.searchable_model][item.searchable_field_type] = @grouped[item.searchable_model][item.searchable_field_type].blank? ? [] : @grouped[item.searchable_model][item.searchable_field_type]
+      @grouped[item.searchable_model][item.searchable_field_type] << item
     end
     @grouped
   end
@@ -24,7 +24,7 @@ class SearchableItem < ActiveRecord::Base
     ActiveRecord::Base.send(:subclasses).each do |model|
       unless model.name == "ActiveRecord::SessionStore::Session" || model.name == "SearchableItem"
         @models[model.name] = {}
-        @models[model.name][:model] = model
+        @models[model.name][:searchable_model] = model
         @models[model.name][:attributes] = {}
         model.columns.each{ |each| 
           unless each.name == "id"
@@ -42,10 +42,10 @@ class SearchableItem < ActiveRecord::Base
     ActiveRecord::Base.send(:subclasses).each do |model|
       unless model.name == "ActiveRecord::SessionStore::Session" || model.name == "SearchableItem"
         @models[model.name] = {}
-        @models[model.name][:model] = model
+        @models[model.name][:searchable_model] = model
         @models[model.name][:attributes] = {}
         model.columns.each{ |each| 
-          unless each.name == "id" || SearchableItem.exists?(:model => model.name, :field => each.name)
+          unless each.name == "id" || SearchableItem.exists?(:searchable_model => model.name, :searchable_field => each.name)
             @models[model.name][:attributes][each.name] = each.type
           end
         }
@@ -56,6 +56,6 @@ class SearchableItem < ActiveRecord::Base
   
   # find all the fields to search on
   def self.find_searchable_fields
-    SearchableItem.find(:all).collect { |each| each.field.to_sym }.uniq
+    SearchableItem.find(:all).collect { |each| each.searchable_field.to_sym }.uniq
   end
 end

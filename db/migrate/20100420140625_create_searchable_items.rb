@@ -1,10 +1,10 @@
 class CreateSearchableItems < ActiveRecord::Migration
   def self.up
     create_table :searchable_items do |t|
-      t.string :model
-      t.string :field
-      t.string :field_type
-      t.integer :status
+      t.string :searchable_model
+      t.string :searchable_field
+      t.string :searchable_field_type
+      t.integer :searchable_status
 
       t.timestamps
     end

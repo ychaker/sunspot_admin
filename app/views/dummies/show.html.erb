@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @dummy.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @dummy.description %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @dummy.age %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @dummy.date %>
+</p>
+
+
+<%= link_to 'Edit', edit_dummy_path(@dummy) %> |
+<%= link_to 'Back', dummies_path %>
