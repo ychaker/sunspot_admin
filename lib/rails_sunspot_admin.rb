@@ -1,4 +1,32 @@
 module RailsSunspotAdmin
+  Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each { |file| require file }
+  
+  # find all models and attributes for this app
+  def self.all_attributes
+    RailsSunspotAdmin.app_attributes_by_model "column.name == 'id'"
+  end
+
+  # find all models and attributes for this app not yet added to search
+  def self.not_searchable
+    RailsSunspotAdmin.app_attributes_by_model "column.name == 'id' || SearchableItem.exists?(:searchable_model => app_model.name, :searchable_field => column.name)"
+  end
+
+  def self.app_attributes_by_model conditions
+    @models =  {}
+    ActiveRecord::Base.send(:subclasses).each do |app_model|
+      unless app_model.name == "ActiveRecord::SessionStore::Session" || app_model.name == "SearchableItem"
+        @models[app_model.name] = {}
+        @models[app_model.name][:searchable_model] = app_model
+        @models[app_model.name][:attributes] = {}
+        app_model.columns.each{ |column| 
+          unless eval(conditions)
+            @models[app_model.name][:attributes][column.name] = column.type
+          end
+        }
+      end
+    end
+    @models
+  end
   
   # Inject the searchable block for specified models and attributes
   # TODO: figure out a way to remove old searchable block

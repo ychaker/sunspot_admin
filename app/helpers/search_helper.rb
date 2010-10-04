@@ -21,7 +21,7 @@ module SearchHelper
   
   def display_result item, hit
     begin
-      render :partial => "display_result_#{item.class.name.downcase}", :locals => {:item => item, :hit => hit }
+      render :partial => "display_result_#{item.class.name.underscore}", :locals => {:item => item, :hit => hit }
     rescue ActionView::MissingTemplate
       render :partial => "default_display_result", :locals => {:item => item, :hit => hit }
     end

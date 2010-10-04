@@ -1,5 +1,7 @@
+%h2= "Search"
+
 .forms
-	= render :partial => 'search_forms'
+	= render :partial => 'search_form'
 .results
 	- @search.each_hit_with_result do |hit, item|
 		= display_result item, hit

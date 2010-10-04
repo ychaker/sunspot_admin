@@ -1,0 +1,9 @@
+.search-form
+	- form_tag :action => :index do
+		= text_field_tag :q, params[:q], :size => 32
+		= select_tag :model, options_for_select(%w{All} + @klasses, params[:model])
+		= submit_tag 'Search'
+.clear-form
+	- form_tag :action => :index do
+		= hidden_field_tag :q, nil
+		= submit_tag 'Clear'

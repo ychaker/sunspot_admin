@@ -1,11 +1,10 @@
 class SunspotAdminController < ApplicationController
   
   def index
-    Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each { |file| require file }
-    @models = SearchableItem.find_nonsearchable_app_models_and_attributes
-    @unprepared = SearchableItem.find(:all, :conditions => {:searchable_status => SearchableItem::NOTPREPARED}, :order => :searchable_model)
-    @prepared = SearchableItem.find(:all, :conditions => {:searchable_status => SearchableItem::PREPARED}, :order => :searchable_model)
-    @indexed = SearchableItem.find(:all, :conditions => {:searchable_status => SearchableItem::INDEXED}, :order => :searchable_model)
+    @models = RailsSunspotAdmin.not_searchable
+    @unprepared = SearchableItem.status(SearchableItem::NOTPREPARED).by_model
+    @prepared = SearchableItem.status(SearchableItem::PREPARED).by_model
+    @indexed = SearchableItem.status(SearchableItem::INDEXED).by_model
     @ready = RailsSunspotAdmin.search_enabled?(SearchableItem.find_grouped_by_model_and_type.keys)
   end
   

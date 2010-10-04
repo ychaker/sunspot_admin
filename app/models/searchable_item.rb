@@ -1,5 +1,8 @@
 class SearchableItem < ActiveRecord::Base
   validates_uniqueness_of(:searchable_field, :scope => :searchable_model)
+
+  scope :status,   proc {|status| where(:searchable_status => status) }
+  scope :by_model, order(:searchable_model)
   
   NOTPREPARED = 1
   PREPARED    = 2
@@ -18,44 +21,8 @@ class SearchableItem < ActiveRecord::Base
     @grouped
   end
   
-  # find all models and attributes for this app
-  def self.find_app_models_and_attributes
-    @models =  {}
-    ActiveRecord::Base.send(:subclasses).each do |model|
-      unless model.name == "ActiveRecord::SessionStore::Session" || model.name == "SearchableItem"
-        @models[model.name] = {}
-        @models[model.name][:searchable_model] = model
-        @models[model.name][:attributes] = {}
-        model.columns.each{ |each| 
-          unless each.name == "id"
-            @models[model.name][:attributes][each.name] = each.type
-          end
-        }
-      end
-    end
-    @models
-  end
-  
-  # find all models and attributes for this app not yet added to search
-  def self.find_nonsearchable_app_models_and_attributes
-    @models =  {}
-    ActiveRecord::Base.send(:subclasses).each do |model|
-      unless model.name == "ActiveRecord::SessionStore::Session" || model.name == "SearchableItem"
-        @models[model.name] = {}
-        @models[model.name][:searchable_model] = model
-        @models[model.name][:attributes] = {}
-        model.columns.each{ |each| 
-          unless each.name == "id" || SearchableItem.exists?(:searchable_model => model.name, :searchable_field => each.name)
-            @models[model.name][:attributes][each.name] = each.type
-          end
-        }
-      end
-    end
-    @models
-  end
-  
   # find all the fields to search on
-  def self.find_searchable_fields
-    SearchableItem.find(:all).collect { |each| each.searchable_field.to_sym }.uniq
+  def self.searchable_fields
+    SearchableItem.status(SearchableItem::INDEXED).collect { |each| each.searchable_field.to_sym }.uniq
   end
 end

@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     @klasses = SearchableItem.find_grouped_by_model_and_type.keys
     if params[:model].blank? || params[:model] == 'All'
       @search = Sunspot.search(@klasses.collect { |klass| Object.const_get(klass) }) do
-        keywords(params[:q], :fields =>  SearchableItem.find_searchable_fields)
+        keywords(params[:q], :fields =>  SearchableItem.searchable_fields)
         paginate :page => params[:page], :per_page => 15
       end
     else
