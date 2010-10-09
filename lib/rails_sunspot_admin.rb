@@ -11,6 +11,7 @@ module RailsSunspotAdmin
     RailsSunspotAdmin.app_attributes_by_model "column.name == 'id' || SearchableItem.exists?(:searchable_model => app_model.name, :searchable_field => column.name)"
   end
 
+  # get all attributes grouped by model
   def self.app_attributes_by_model conditions
     @models =  {}
     ActiveRecord::Base.send(:subclasses).each do |app_model|
@@ -29,33 +30,35 @@ module RailsSunspotAdmin
   end
   
   # Inject the searchable block for specified models and attributes
-  # TODO: figure out a way to remove old searchable block
-  # TODO: or user Sunspot.setup instead of the searchable block
   # Currently, removed fields will be indexed but omitted from searches through the search controller
-  # klasses => { :User => { :string => ['name', 'initials'] }, :Sprint => { :string => ['title', 'theme'], :integer => ['number_of_days'] }
+  # klasses => 'User' => { 'string' => [:name, :initials], 'integer' => [:age] }
+  # field types: text, string, integer, float, time, boolean
+  # index all fields as text fields in order to make them searchable
   def self.make_searchable(klasses = {})
-    klasses.each_pair do # :User => { :string => ['name', 'initials'] }
+    klasses.each_pair do # 'User' => { 'string' => [:name, :initials], 'integer' => [:age] }
       |klass, hash|
-      # klass = User
-      # hash = { :string => ['name', 'initials'] }
-      # Object.const_get(klass) => User
-      # User.class_eval
+      # klass = 'User'
+      # hash = { 'string' => [:name, :initials], 'integer' => [:age] }
       Object.const_get(klass).class_eval do
-        # searchable do
-        #   text :name
-        #   text :initials
-        # end
         searchable do
-          # hash = { :string => ['name', 'initials'] }
-          hash.each_pair do |type, items|
-            # type = :string
-            # items = ['name', 'initials']
-            # TODO: Use dynamic type instead of just 'string'
-            # example: send type, items.collect { |each| each.field.to_sym }
-            items.each do |item|
-              text item.searchable_field.to_sym
+          hash.each_pair do |type, fields|
+            case type
+            when 'string'
+              string *fields
+            when 'integer'
+              integer *fields
+            when 'float'
+              float *fields
+            when 'time', 'date', 'datetime'
+              time *fields
+            when 'boolean'
+              boolean *fields
+            else # text, string, or any other non supported type
+              text *fields
             end
           end
+          all_fields = hash.each_key.inject([]) {|result, each| result << hash[each] }.flatten
+          text *all_fields
         end
       end
     end

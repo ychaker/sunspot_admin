@@ -10,13 +10,14 @@ class SearchableItem < ActiveRecord::Base
 
   # Return a hash of attributes to index grouped by model name and type
   # to make it easy to loop through the list and make the models 'searchable'
+  # Example: 'User' => { 'string' => [:name, :initials], 'integer' => [:age] }
   def self.find_grouped_by_model_and_type *conditions
     all = SearchableItem.find :all, *conditions
     @grouped = {}
     all.each do |item|
       @grouped[item.searchable_model] =  @grouped[item.searchable_model].blank? ? {} : @grouped[item.searchable_model]
       @grouped[item.searchable_model][item.searchable_field_type] = @grouped[item.searchable_model][item.searchable_field_type].blank? ? [] : @grouped[item.searchable_model][item.searchable_field_type]
-      @grouped[item.searchable_model][item.searchable_field_type] << item
+      @grouped[item.searchable_model][item.searchable_field_type] << item.searchable_field.to_sym
     end
     @grouped
   end
