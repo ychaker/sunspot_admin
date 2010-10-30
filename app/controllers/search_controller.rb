@@ -18,7 +18,7 @@ class SearchController < ApplicationController
 
 private
   def check_init
-    unless RailsSunspotAdmin.search_enabled?(SearchableItem.find_grouped_by_model_and_type.keys)
+    unless RailsSunspotAdmin.ready?
       render "not_ready"
       return
     end

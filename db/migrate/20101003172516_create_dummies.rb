@@ -1,16 +1,20 @@
 class CreateDummies < ActiveRecord::Migration
   def self.up
-    create_table :dummies do |t|
-      t.string :name
-      t.text :description
-      t.integer :age
-      t.datetime :date
+    if RAILS_ENV == 'test'
+      create_table :dummies do |t|
+        t.string :name
+        t.text :description
+        t.integer :age
+        t.datetime :date
 
-      t.timestamps
+        t.timestamps
+      end
     end
   end
 
   def self.down
-    drop_table :dummies
+    if RAILS_ENV == 'test'
+      drop_table :dummies
+    end
   end
 end

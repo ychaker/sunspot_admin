@@ -1,0 +1,13 @@
+sessionname Sunspot_Admin
+caption always
+screen -t editor 	0 	$HOME/bin/wrap 	mate .
+screen -t git    	1 	$HOME/bin/wrap 	git pull origin master
+screen -t manage  2 	$HOME/bin/wrap 	rake -T
+screen -t server 	8 	$HOME/bin/wrap  rails s
+screen -t tests 	9 	$HOME/bin/wrap  rake spec
+select 1
+select 0
+
+source $HOME/.screenrc
+caption always
+

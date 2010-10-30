@@ -1,5 +1,6 @@
 class SearchableItem < ActiveRecord::Base
-  validates_uniqueness_of(:searchable_field, :scope => :searchable_model)
+  validates_uniqueness_of :searchable_field, :scope => :searchable_model
+  validates_presence_of :searchable_model, :searchable_field, :searchable_field_type
 
   scope :status,   proc {|status| where(:searchable_status => status) }
   scope :by_model, order(:searchable_model)
@@ -11,8 +12,8 @@ class SearchableItem < ActiveRecord::Base
   # Return a hash of attributes to index grouped by model name and type
   # to make it easy to loop through the list and make the models 'searchable'
   # Example: 'User' => { 'string' => [:name, :initials], 'integer' => [:age] }
-  def self.find_grouped_by_model_and_type *conditions
-    all = SearchableItem.find :all, *conditions
+  def self.find_grouped_by_model_and_type conditions = []
+    all = SearchableItem.where(conditions)
     @grouped = {}
     all.each do |item|
       @grouped[item.searchable_model] =  @grouped[item.searchable_model].blank? ? {} : @grouped[item.searchable_model]

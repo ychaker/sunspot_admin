@@ -1,23 +1,25 @@
+require "net/http"
+
 module RailsSunspotAdmin
-  Dir.glob(RAILS_ROOT + '/app/models/**/*.rb').each { |file| require file }
+  Dir.glob(Rails.root.to_s + '/app/models/**/*.rb').each { |file| require file }
   
   # find all models and attributes for this app
   def self.all_attributes
     RailsSunspotAdmin.app_attributes_by_model "column.name == 'id'"
   end
 
-  # find all models and attributes for this app not yet added to search
+  # find all models and attributes for this app not yet added to SearchableItem table
   def self.not_searchable
     RailsSunspotAdmin.app_attributes_by_model "column.name == 'id' || SearchableItem.exists?(:searchable_model => app_model.name, :searchable_field => column.name)"
   end
 
   # get all attributes grouped by model
-  def self.app_attributes_by_model conditions
+  def self.app_attributes_by_model conditions=false
     @models =  {}
-    ActiveRecord::Base.send(:subclasses).each do |app_model|
+    ActiveRecord::Base.send(:descendants).each do |app_model|
       unless app_model.name == "ActiveRecord::SessionStore::Session" || app_model.name == "SearchableItem"
         @models[app_model.name] = {}
-        @models[app_model.name][:searchable_model] = app_model
+        @models[app_model.name][:searchable_model] = app_model 
         @models[app_model.name][:attributes] = {}
         app_model.columns.each{ |column| 
           unless eval(conditions)
@@ -73,13 +75,27 @@ module RailsSunspotAdmin
   
   # Check if any of the models is searchable
   # Helpful when server restarts
-  def self.search_enabled?(klasses = [])
+  def self.search_enabled?
+    klasses = ActiveRecord::Base.send(:descendants).map { |each| each.name }
     klasses.each { |klass| 
       if Object.const_get(klass).searchable?
         return true
       end
     }
     return false
+  end
+  
+  def self.solr_running?
+    begin
+      request = Net::HTTP.get_response(URI.parse(Sunspot.config.solr.url))
+      return true
+    rescue Errno::ECONNREFUSED
+      return false
+    end
+  end
+  
+  def self.ready?
+    return RailsSunspotAdmin.solr_running? && RailsSunspotAdmin.search_enabled?
   end
   
 end
