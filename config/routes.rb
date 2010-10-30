@@ -1,13 +1,13 @@
 SunspotAdmin::Application.routes.draw do
-  
-  resources :dummies
 
-  match 'sunspot_admin' => 'sunspot_admin#index'
-  match 'sunspot_admin/make_searchable' => 'sunspot_admin#make_searchable'
-  match 'sunspot_admin/reindex' => 'sunspot_admin#reindex'
-  match 'sunspot_admin/make_searchable_and_reindex' => 'sunspot_admin#make_searchable_and_reindex'
-  match 'sunspot_admin/add_searchable_item' => 'sunspot_admin#add_searchable_item'
-  match 'sunspot_admin/remove_searchable_item' => 'sunspot_admin#remove_searchable_item'
+  match 'admin/search' => 'sunspot_admin#index'
+  match 'admin/search/make_searchable' => 'sunspot_admin#make_searchable'
+  match 'admin/search/reindex' => 'sunspot_admin#reindex'
+  match 'admin/search/make_searchable_and_reindex' => 'sunspot_admin#make_searchable_and_reindex'
+  match 'admin/search/add_searchable_item' => 'sunspot_admin#add_searchable_item'
+  match 'admin/search/remove_searchable_item' => 'sunspot_admin#remove_searchable_item'
+  match 'admin/search/start_solr' => 'sunspot_admin#start_solr'
+  match 'admin/search/stop_solr' => 'sunspot_admin#stop_solr'
   match 'search' => 'search#index'
   
   root :to => "search#index"

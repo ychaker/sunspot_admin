@@ -6,7 +6,8 @@ class SunspotAdminController < ApplicationController
     @unprepared = SearchableItem.status(SearchableItem::NOTPREPARED).by_model
     @prepared = SearchableItem.status(SearchableItem::PREPARED).by_model
     @indexed = SearchableItem.status(SearchableItem::INDEXED).by_model
-    @ready = RailsSunspotAdmin.ready?
+    @searchable = RailsSunspotAdmin.search_enabled?
+    @solr_running = RailsSunspotAdmin.solr_running?
   end
   
   def make_searchable
@@ -48,7 +49,29 @@ class SunspotAdminController < ApplicationController
     redirect_to(:action => :index)
   end
   
+  def start_solr
+    Sunspot::Rails::Server.new.start
+    while(starting)
+    end
+    redirect_to(:action => :index)
+  end
+  
+  def stop_solr
+    Sunspot::Rails::Server.new.stop
+    redirect_to(:action => :index)
+  end
+ 
 private
+  def starting
+    begin
+      sleep(1)
+      request = Net::HTTP.get_response(URI.parse(Sunspot.config.solr.url))
+      false
+    rescue Errno::ECONNREFUSED
+      true
+    end
+  end
+  
   def setup_and_reindex items
     RailsSunspotAdmin.make_searchable items
     RailsSunspotAdmin.reindex items.keys

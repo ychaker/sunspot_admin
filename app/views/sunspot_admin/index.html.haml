@@ -2,7 +2,16 @@
 
 .status
 	%p
-		- if !@ready
+	- if !@solr_running
+		Status: Solr is not running. Click here to 
+		= link_to 'run', :action => :start_solr, :controller => :sunspot_admin 
+		the Solr Server.
+	- else
+		Status: Solr is running. Click here to 
+		= link_to 'stop', :action => :stop_solr, :controller => :sunspot_admin 
+		the Solr Server.
+	%p
+		- if !@searchable
 			Status: Search is not enabled! Make sure you have selected attributes to index. If you have, click
 			= link_to 'here', :action => :make_searchable, :controller => :sunspot_admin 
 			to enable search.
