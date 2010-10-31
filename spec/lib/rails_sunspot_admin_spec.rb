@@ -28,6 +28,12 @@ describe RailsSunspotAdmin do
       RailsSunspotAdmin.make_searchable({ 'Dummy' => { 'string' => [:name] } })
       Dummy.searchable?.should == true
     end
+    
+    it "should initialize search for models already added to index" do
+      Factory.create(:dummy_age, :searchable_status => SearchableItem::INDEXED)
+      RailsSunspotAdmin.initialize_search
+      Dummy.searchable?.should == true
+    end
   end
   
   describe '#solr' do

@@ -1,0 +1,2 @@
+
+RailsSunspotAdmin.initialize_search

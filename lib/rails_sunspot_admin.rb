@@ -66,6 +66,12 @@ module RailsSunspotAdmin
     end
   end
   
+  # initialize search for items already added to the index
+  # used when server restarts and model classes lose searchable block previously injected
+  def self.initialize_search
+    RailsSunspotAdmin.make_searchable SearchableItem.find_grouped_by_model_and_type  "searchable_status = '#{SearchableItem::INDEXED}'"
+  end
+  
   # Remove all indexed items for specified models and then reindex
   def self.reindex(klasses = [])
     Sunspot.remove_all!(klasses.collect{ |klass| Object.const_get(klass) })
@@ -85,6 +91,7 @@ module RailsSunspotAdmin
     return false
   end
   
+  # Check if the solr server is running
   def self.solr_running?
     begin
       request = Net::HTTP.get_response(URI.parse(Sunspot.config.solr.url))
