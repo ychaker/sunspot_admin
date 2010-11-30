@@ -1,0 +1,27 @@
+<h1>Listing first_models</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @first_models.each do |first_model| %>
+  <tr>
+    <td><%= first_model.name %></td>
+    <td><%= first_model.description %></td>
+    <td><%= first_model.number %></td>
+    <td><%= link_to 'Show', first_model %></td>
+    <td><%= link_to 'Edit', edit_first_model_path(first_model) %></td>
+    <td><%= link_to 'Destroy', first_model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New First model', new_first_model_path %>

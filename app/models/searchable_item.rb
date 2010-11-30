@@ -27,4 +27,8 @@ class SearchableItem < ActiveRecord::Base
   def self.searchable_fields
     SearchableItem.status(SearchableItem::INDEXED).collect { |each| each.searchable_field.to_sym }.uniq
   end
+  
+  def is_model_and_attribute model_name, attribute_name
+    self.searchable_model == model_name && self.searchable_field == attribute_name
+  end
 end

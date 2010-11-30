@@ -86,7 +86,7 @@ module RailsSunspotAdmin
     klasses.each { |klass| 
       if Object.const_get(klass).searchable?
         return true
-      end
+      end unless klass  == "ActiveRecord::SessionStore::Session" || klass == "SearchableItem"
     }
     return false
   end

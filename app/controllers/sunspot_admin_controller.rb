@@ -1,11 +1,13 @@
 class SunspotAdminController < ApplicationController
   before_filter :has_access
+  layout "susnpot_admin"
   
   def index
-    @models = RailsSunspotAdmin.not_searchable
+    @models = RailsSunspotAdmin.all_attributes
     @unprepared = SearchableItem.status(SearchableItem::NOTPREPARED).by_model
     @prepared = SearchableItem.status(SearchableItem::PREPARED).by_model
     @indexed = SearchableItem.status(SearchableItem::INDEXED).by_model
+    @added = ((@unprepared.to_a << @prepared.to_a).flatten << @indexed.to_a).flatten
     @searchable = RailsSunspotAdmin.search_enabled?
     @solr_running = RailsSunspotAdmin.solr_running?
   end
@@ -42,7 +44,10 @@ class SunspotAdminController < ApplicationController
   end
   
   def remove_searchable_item
-    @item = SearchableItem.find(params[:id])
+    @item = SearchableItem.find(:first, :conditions => { 
+      :searchable_model => params[:attribute][:searchable_model], 
+      :searchable_field => params[:attribute][:searchable_field]
+    })
     @item.destroy
     @items = SearchableItem.find_grouped_by_model_and_type
     setup_and_reindex @items

@@ -108,7 +108,6 @@ DEPENDENCIES
   factory_girl_rails
   haml
   mysql2
-  nokogiri
   rails (= 3.0.0)
   rspec-rails (~> 2.0.1)
   sunspot_rails (>= 1.2.rc3)

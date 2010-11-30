@@ -1,0 +1,27 @@
+<h1>Listing second_models</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @second_models.each do |second_model| %>
+  <tr>
+    <td><%= second_model.name %></td>
+    <td><%= second_model.description %></td>
+    <td><%= second_model.number %></td>
+    <td><%= link_to 'Show', second_model %></td>
+    <td><%= link_to 'Edit', edit_second_model_path(second_model) %></td>
+    <td><%= link_to 'Destroy', second_model, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Second model', new_second_model_path %>

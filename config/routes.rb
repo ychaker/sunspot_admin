@@ -1,5 +1,9 @@
 SunspotAdmin::Application.routes.draw do
 
+  resources :second_models
+
+  resources :first_models
+
   match 'admin/search' => 'sunspot_admin#index'
   match 'admin/search/make_searchable' => 'sunspot_admin#make_searchable'
   match 'admin/search/reindex' => 'sunspot_admin#reindex'

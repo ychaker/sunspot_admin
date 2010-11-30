@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @first_model.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @first_model.description %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @first_model.number %>
+</p>
+
+
+<%= link_to 'Edit', edit_first_model_path(@first_model) %> |
+<%= link_to 'Back', first_models_path %>

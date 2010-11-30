@@ -1,6 +1,6 @@
 module SearchHelper
   def search_item_link item, text = "more"
-    link_to text, :action => :show, :controller => item.class.name.downcase.pluralize.to_sym, :id => item.id
+    link_to text, :action => :show, :controller => item.class.name.underscore.downcase.pluralize.to_sym, :id => item.id
   end
   
   # Try to guess what attribute to use as the item's title

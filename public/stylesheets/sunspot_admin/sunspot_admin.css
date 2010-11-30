@@ -1,0 +1,585 @@
+@import url('fonts.css');
+@import url('reset.css');
+
+/* BEGIN GENERAL */
+.clear { clear: both; }
+#sunspot-admin {
+	width: 720px;
+	height: 100%;
+	margin: 0px auto;
+	font-family: 'Lucida Grande', verdana,arial,helvetica,sans-serif;
+}
+#sunspot-admin header {
+	background: url(/images/sunspot_admin/header-wooden-pannel.png);
+	width: 100%;
+	height: 70px;
+	display: block;
+	margin: 0px auto;
+	clear: both;
+}
+#sunspot-admin header h1 {
+	text-indent: -999em;
+	background: url(/images/sunspot_admin/admin-logo.png) no-repeat;
+	width: 150px;
+	height: 70px;
+	float: left;
+}
+#sunspot-admin header #ram {
+	float: right;
+	width: 130;
+	height: 44px;
+	margin: 15px 10px 10px;
+}
+#sunspot-admin footer {
+	background: url(/images/sunspot_admin/metal-background.png) repeat-x;
+	width: 100%;
+	height: 160px;
+	position: relative;
+}
+#sunspot-admin footer #vent {
+	background: url(/images/sunspot_admin/bottom-vent.png) no-repeat;
+	width: 600px;
+	margin: 0 auto;
+	height: 100%;
+}
+#sunspot-admin footer #signature {
+	color: gray;
+	position: absolute;
+	right: 5%;
+	top: 80%;
+}
+/* END GENERAL */
+/* BEGIN STATUS */
+#sunspot-admin #status {
+	background: url(/images/sunspot_admin/carbon-fiber-pattern.png) repeat;
+	height: 140px;
+	padding: 10px;
+	padding-bottom: 0;
+}
+#sunspot-admin #solr-server,
+#sunspot-admin #server-status,
+#sunspot-admin #index {
+	display: block;
+	float: left;
+	height: 90px;
+	padding: 10px;
+	margin: 5px;
+	color: #b4b6b5;
+	border: 2px #5a5b5c solid;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	text-align: center;
+}
+#sunspot-admin #solr-server h2,
+#sunspot-admin #server-status h2,
+#sunspot-admin #index h2 {
+	text-transform: uppercase;
+	font-size: .70em;
+	margin: 0 auto;
+}
+
+/* BEGIN POWER BUTTON */
+#sunspot-admin #solr-server {
+	width: 50px;
+}
+#sunspot-admin .power_button_base_border {
+	float: left;
+	background-color: black;
+	width: 34px;
+	height: 58px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	position: relative;
+	margin: 5px 7px;
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+}
+#sunspot-admin .power_button_base_gradient {
+	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 28px;
+	height: 52px;
+	position: absolute;
+	left: 2px;
+	top: 2px;
+	border-top: 1px solid #3d3b3a;
+	border-right: 1px solid #1b1d1e;
+	border-left: 1px solid #1b1d1e;
+	border-bottom: 1px solid #1b1d1e;
+	border-radius: 2px;
+	-moz-border-radius: 2px;	
+}
+#sunspot-admin .power_button_inner_glow {
+	background: -webkit-gradient(linear, 62% 81%, 62% 0%, from(#3e0404), to(red));
+	background: -moz-linear-gradient(0% 62% 90deg,#3E0404, red);
+	width: 26px;
+	height: 51px;
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_inner_glow_off {
+	background: black;
+	width: 26px;
+	height: 51px;
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_top {
+	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 24px;
+	height: 40px;
+	position: absolute;
+	left:1px;
+	top:1px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_top_off {
+	background: black;
+	width: 24px;
+	height:8px;
+	position:absolute;
+	left:1px;
+	top:1px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_bottom {
+	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 24px;
+	height: 8px;
+	position: absolute;
+	left: 1px;
+	top: 42px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_bottom_off {
+	background: -webkit-gradient(linear, 0% 95%, 0% 5%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 95% 90deg, #26292B, #0E0B0A);
+	width: 24px;
+	height: 40px;
+	position: absolute;
+	left: 1px;
+	top: 10px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_flare {
+	background: -webkit-gradient(radial, 12 2, 0, 12 2, 20, from(#363332), to(#0a0707));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 24px;
+	height: 2px;
+	position: absolute;
+	left: 1px;
+	top: 40px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_flare_off {
+	background: -webkit-gradient(radial, 12 2, 0, 12 2, 20, from(#363332), to(#0a0707));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 24px;
+	height: 2px;
+	position: absolute;
+	left: 1px;
+	top: 8px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .power_button_light_rim_on {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#75000B), to(#984046));
+	background: -moz-linear-gradient(0% 0% 90deg,#75000B, #984046);
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 6px;
+	top: 6px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-moz-box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+	-webkit-box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+	box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+}
+#sunspot-admin .power_button_light_rim_off {
+	background: -webkit-gradient(linear, 0% 0%, 0% 68%, from(#130D0C), to(#363433));
+	background: -moz-linear-gradient(0% 0% 0deg,#130D0C, #363433);
+	width: 12px;
+	height: 12px;
+	position: absolute;
+	left: 7px;
+	top: 14px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+}
+#sunspot-admin .power_button_light_on {
+	background: -webkit-gradient(radial, 5 5, 5, 5 5, 1, from(#790012), to(#FFFFFF), color-stop(.75,#FF0000));
+	background: -moz-radial-gradient(50% 50% 0deg,circle contain, #FFFFFF, #FF0000, #790012  100%);
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-moz-box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+	-webkit-box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+	box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
+}
+#sunspot-admin .power_button_light_off {
+	background: -webkit-gradient(radial, 5 5, 5, 5 5, 1, from(#320003), to(#FFFFFF), color-stop(.8,#590000));
+	background: -moz-radial-gradient(50% 50% 0deg,circle contain, #FFFFFF, #590000, #320003 90%);
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+}
+/* END POWER BUTTON */
+
+/* BEGIN ITEM DISPLAY */
+#sunspot-admin #server-status {
+	text-transform: uppercase;
+}
+#sunspot-admin #server-status .text {
+	font-size: 12px;
+}
+#sunspot-admin .search_on,
+#sunspot-admin .search_off,
+#sunspot-admin .indexed_item,
+#sunspot-admin .unindexed_item {
+	float:left;
+	margin: 7px 5px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+}
+#sunspot-admin .search_on,
+#sunspot-admin .indexed_item {
+	color: green;
+	background: -webkit-gradient(linear, 62% 81%, 62% 0%, from(#3e0404), to(#0cfc00));
+	background: -moz-linear-gradient(0% 62% 90deg,#3E0404, #0cfc00);
+}
+#sunspot-admin .search_on,
+#sunspot-admin .search_off {
+	width: 300px;
+	height: 60px;
+	border-bottom: 1px solid black;
+}
+#sunspot-admin .indexed_item,
+#sunspot-admin .unindexed_item {
+	width: 165px;
+	height: 23px;
+	border-bottom: 1px solid #e8e7e6;
+}
+#sunspot-admin .search_off,
+#sunspot-admin .unindexed_item {
+	color: red;
+	background :-webkit-gradient(linear, 62% 81%, 62% 0%, from(#3e0404), to(red));
+	background: -moz-linear-gradient(0% 62% 90deg,#3E0404, red);
+}
+#sunspot-admin .item_display {
+	background: -webkit-gradient(linear, 0% 50%, 0% 6%, from(#0B0B0B), to(#0B0B0B), color-stop(0,#201E1E));
+	background: -moz-linear-gradient(0% 50% 90deg,#0B0B0B, #0B0B0B, #201E1E 0%);
+	font-family: 'New', sans-serif;
+	position: relative;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+	text-align: left;
+	padding-left: 2px;
+}
+#sunspot-admin .search_on .item_display,
+#sunspot-admin .search_off .item_display {
+	width: 294px;
+	height: 56px;
+	left: 2px;
+	top: 2px;
+}
+#sunspot-admin .indexed_item .item_display,
+#sunspot-admin .unindexed_item .item_display {
+	width: 163px;
+	height: 22px;
+	left: 1px;
+	top: 1px;
+}
+#sunspot-admin .indexed_item .text,
+#sunspot-admin .unindexed_item .text {
+	position: absolute;
+	font-size: 8px;
+	margin-top: 3px;
+	margin-left: 4px;
+	text-transform: lowercase;
+}
+/* END ITEM DISPLAY */
+
+/* BEGIN INDEX BUTTON */
+#sunspot-admin .index_button_base_border {
+	float: left;
+	background-color: black;
+	width: 48px;
+	height: 58px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	position: relative;
+	margin: 5px 3px;
+	-moz-box-shadow:0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	-webkit-box-shadow:0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	box-shadow:0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+}
+#sunspot-admin .index_button_base_gradient {
+	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	width: 42px;
+	height: 52px;
+	position:absolute;
+	left:2px;
+	top:2px;
+	border-top: 1px solid #3d3b3a;
+	border-right: 1px solid #1b1d1e;
+	border-left: 1px solid #1b1d1e;
+	border-bottom: 1px solid #1b1d1e;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+#sunspot-admin .index_button_rim {
+	background: -webkit-gradient(linear, 0% 0%, 0% 87%, from(#16a800), to(#084000), color-stop(.6,#246A01));
+	background: -moz-linear-gradient(19% 75% 90deg,#084000, #16A800);
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 6.25px;
+	top: 10px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-moz-box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
+	-webkit-box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
+	box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
+}
+#sunspot-admin .index_button_fill {
+	background: -webkit-gradient(radial, 15 20, 5, 14 30, 30, from(#1BEA00), to(#0D8700));
+	background: -moz-linear-gradient(19% 75% 90deg,#1BEA00, #0D8700);
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	border-radius: 13px;
+	-moz-border-radius: 13px;
+	left: 2.25px;
+	top: 2px;
+	box-shadow: 0px 1px 1px #138500;
+	-webkit-box-shadow: inset 0px 0px 2px #138500;
+}
+#sunspot-admin .index_button_rim_pressed {
+	background: green;
+	background: green;
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	left: 6.25px;
+	top: 10px;
+	border-radius: 15px;
+	border:1px solid #befbc2;
+	-moz-border-radius: 15px;
+	-moz-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
+	-webkit-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
+	box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
+}
+#sunspot-admin .index_button_fill_pressed {
+	background: -webkit-gradient(radial, 15 20, 5, 14 30, 30, from(#0D8700), to(#1BEA00));
+	background: -moz-linear-gradient(19% 75% 90deg,#1BEA00, #0D8700);
+	width: 26px;
+	height: 26px;
+	position: absolute;
+	border-radius: 13px;
+	-moz-border-radius: 13px;
+	left: 1px;
+	top: 1px;
+	-webkit-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
+}
+/* END INDEX BUTTON */
+/* END STATUS */
+
+/* BEGIN MODELS */
+#sunspot-admin #items {
+	background: url(/images/sunspot_admin/metal-background.png) repeat;
+	padding: 10px;
+}
+#sunspot-admin #items a {
+	text-decoration: none;
+}
+#sunspot-admin .model {
+	width: 600px;
+	padding: 0;
+	margin: 20px auto;
+	display: block;
+	border: 2px #5a5b5c solid;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+#sunspot-admin .model h2,
+#sunspot-admin .model h2 a {
+	text-transform: uppercase;
+	font-size: 1em;
+	line-height: 1.6em;
+	margin: 0 auto;
+	color: white;
+	text-align: center;
+	background: #85542d;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+}
+
+/* BEGIN ADD BUTTONS */
+#sunspot-admin .button_text {
+	line-height: 16px;
+	font-size: .6em;
+	text-align: center;	
+}
+#sunspot-admin .add_button {
+	float: left;
+	clear: left;
+	margin: 7px 3px;
+}
+#sunspot-admin .add_button_outer {
+	width: 36px;
+	height: 18px;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+}
+#sunspot-admin .add_button_center_border {
+	width: 36px;
+	height: 18px;
+	position: relative;
+	border-radius: 1.5px;
+	-moz-border-radius: 1.5px;
+	top: 4%;
+	left: 0%;
+}
+#sunspot-admin .add_button_center {
+	width: 34px;
+	height: 16px;
+	position: absolute;
+	border-radius: 1.5px;
+	-moz-border-radius: 1.5px;
+	top: 6%;
+	left: 3%;
+}
+
+/* BEGIN ON ADD BUTTON */
+#sunspot-admin .button_on .add_button_outer {
+	background: #d18080;
+	border-top: 2px solid #cb7171;
+	border-right: 2.5px solid #b63838;
+	border-left: 2.5px solid #b63838;
+	border-bottom: 2.5px solid #b63838;
+	-moz-box-shadow: 0px 0px 30px #FF1919;
+	-webkit-box-shadow: 0px 0px 30px #FF1919;
+	box-shadow: 0px 0px 21px #FF1919;
+}
+#sunspot-admin .button_on .add_button_center_border {
+	background: #fb4040;
+	-moz-box-shadow: 0px 4px 2px rgba(224,133,133,0.5);
+	-webkit-box-shadow: 0px 4px 2px rgba(224,133,133,0.5);
+	box-shadow: 0px 4px 2px rgba(0,0,0,0.3),0px 3px 2px rgba(44,44,44,0.1);
+}
+#sunspot-admin .button_on .add_button_center {
+	color: #fff;
+	text-shadow: 0px 0px 4px #FFF;
+	background: -webkit-gradient(radial, 10 6, 0, 20 6, 20, from(#ff0000), to(#cc0000));
+	background: -moz-radial-gradient(53% 50% 90deg,circle cover, #ff0000, #cc0000);
+}
+/* END ON ADD BUTTON */
+
+/* BEGIN OFF ADD BUTTON */
+#sunspot-admin .button_off .add_button_outer {
+	background: #605f5e;
+	border-top: 2px solid #6c6b6b;
+	border-right: 2.5px solid black;
+	border-left: 2.5px solid black;
+	border-bottom: 2.5px solid black;
+	-moz-box-shadow: 0px 3px 12px #191919;
+	-webkit-box-shadow: 0px 3px 12px #191919;
+	box-shadow: 0px 3px 12px #191919;
+}
+#sunspot-admin .button_off .add_button_center_border {
+	background: -webkit-gradient(linear, 62% 81%, 62% 0%, from(#3e0404), to(#7f3d3d));
+	background: -moz-linear-gradient(0% 62% 90deg,#3E0404, #7F3D3D);
+	-moz-box-shadow: 0px 4px 2px rgba(0,0,0,0.3),0px 7px 2px rgba(44,44,44,0.4);
+	-webkit-box-shadow: 0px 4px 2px rgba(0,0,0,0.3),0px 7px 2px rgba(44,44,44,0.4);
+	box-shadow: 0px 4px 2px rgba(0,0,0,0.3),0px 7px 2px rgba(44,44,44,0.4);
+}
+#sunspot-admin .button_off .add_button_center {
+	color: #b87373;
+	background: -webkit-gradient(radial, 20 12, 0, 20 12, 20, from(#930000), to(#700101));
+	background: -moz-radial-gradient(53% 50% 90deg,circle cover, #930000, #700101);
+}
+/* END OFF ADD BUTTON */
+/* END ADD BUTTON */
+
+/* BEGIND INDEXED LIGHT */
+#sunspot-admin .indexed_light {
+	float: left;
+	width: 44px;
+	height: 22px;
+	border-radius: 1px;
+	-moz-border-radius: 1px;
+	position: relative;
+	margin:7px 3px;
+}
+#sunspot-admin .indexed_light .text { 
+	margin-top: 3px;
+}
+
+/* BEGIN UNINDEXED ITEM */
+#sunspot-admin .unindexed {
+	background: -webkit-gradient(linear, 46% 55%, 46% 100%, from(#1b5f28), to(#273b2e));
+	background: -moz-radial-gradient(53% 50% 90deg,circle cover, #1b5f28, #273b2e);
+	color: #054500;
+	border-top: 1px solid #244716;
+	border-bottom: 1px solid #e8e7e6;
+	-moz-box-shadow: inset 0px 1px 5px #104b1b;
+	-webkit-box-shadow: inset 0px 1px 5px #0b3012;
+	box-shadow: inset 0px 1px 5px #104b1b;
+}
+/* END UNINDEXED ITEM */
+
+/* BEGIN INDEXED ITEM */
+#sunspot-admin .indexed {
+	background: -webkit-gradient(radial, 20 6, 0, 20 6, 20, from(#0cfc00), to(#00ac04));
+	background: -moz-radial-gradient(53% 50% 90deg,circle cover, #0cfc00, #00ac04);
+	color: #f0faef;
+	border-top: 1px solid #118108;
+	border-bottom: 1px solid #e8e7e6;
+	-moz-box-shadow: inset 0px 1px 5px #149d0a;
+	-webkit-box-shadow: inset 0px 1px 5px #149d0a;
+	box-shadow: inset 0px 1px 5px #149d0a;
+}
+#sunspot-admin .indexed .text {
+	text-shadow: 0px 0px 4px #FFF;
+}
+/* END INDEXED ITEM */
+/* END INDEXED LIGHT */
+
+#sunspot-admin .item {
+	width: 273px;
+	margin: 0 10px;
+}
+#sunspot-admin #items .first_column {
+	float: left;
+	margin-left: 20px;
+}
+#sunspot-admin #items .second_column {
+	float: right;
+}
+/* END MODELS */

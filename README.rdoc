@@ -6,10 +6,11 @@ This plugin is created to make managing Solr Search using the Sunspot gem easier
 
 * Selecting which application models/attributes to index through a simple interface
 * Manual reindexing
+* Starting the Solr server through the web admin 
 
 == Search Results
 
-By creating partials in your app directory you can override how results are displayed.
+By creating partials in your app/views directory you can override how results are displayed.
 
 The default template can be overridden by creating the following file:
 
@@ -21,60 +22,41 @@ It is suggested to create a template for each model:
 
 == Dependencies
 
-=== Sunspot
+This application is dependent on the following gems:
 
-For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
-
-	config.gem 'sunspot', :lib => 'sunspot'
-	config.gem 'sunspot_rails', :lib => 'sunspot/rails'
-
-Install the gems with:
-
-	rake gems:install
-
-If you are using an older version of Rails that doesn’t support plugins-as-gems, install the gems manually and install the plugin:
-
-	sudo gem install sunspot sunspot_rails --source=http://gems.github.com
+	gem 'sunspot_rails', ">= 1.2.rc3"
+	gem 'haml'
+	gem "will_paginate", "~> 3.0.pre2"
 	
-	script/plugin install git://github.com/outoftime/sunspot_rails.git
-
-Generate the file config/sunspot.yml:
-
-	script/generate sunspot
-
-Require the rake tasks in your Rakefile:
-
-	require 'sunspot/rails/tasks'
+Use 
 	
-To start up a Solr instance, issue the following:
+	bundle install
+
+to install the required dependencies
+
+for testing and development, the following gems are required:
+
+	gem 'factory_girl_rails'
+  gem "rspec-rails", "~> 2.0.1"
+  gem "autotest"
+  gem "webrat"
+
+=== Authentication
+
+This plugin is dependent on a presence of an authentication method that uses 'current_user' and where the user object responds to the 'is_admin?' method. You could use a combination of CanCan and Authlogic or Devise to achieve this.
+
+== Solr
+	
+To start up a Solr instance manually, issue the following:
 
 	rake sunspot:solr:start
 
 Note that using the built-in Solr instance packaged with Sunspot is great for development, but is not recommended for production. See the Sunspot documentation for more information.
 
-=== Will_Paginate
-
-For recent versions of Rails, In your project’s config/environment.rb, add the following gem dependencies:
-
-	config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
-
-Install the gems with:
-
-	rake gems:install
-
-You may need to add the following at the end of config/environment.rb:
-
-	require "will_paginate"
-
-=== HAML
-
-HAML is used to replace the .erb templates:
-
-	gem install haml
-	
-	haml --rails path/to/rails/app
 
 == Setup
+
+TODO: fix this:
 
 install plugin:
 
@@ -94,7 +76,7 @@ add the routes to your config/routes.rb:
 
 go to:
 
-	/sunspot_admin
+	/admin/search
 
 to add attributes to be indexed. Once models and attributes have been added to be indexed, click the 'reindex' link to reindex your database. I have separated the steps required to get a model indexed in order to allow the admin to add multiple models and fields and then indexing them all at once. Depending on the size of your database, indexing entries make take a while.
 
@@ -108,7 +90,7 @@ to start searching indexed documents. Make sure you have enabled search for at l
 
 ==Version
 
-0.1
+0.2
 
 == Copyright
 

@@ -10,13 +10,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101003172516) do
+ActiveRecord::Schema.define(:version => 20101122233405) do
 
-  create_table "dummies", :force => true do |t|
+  create_table "first_models", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "age"
-    t.datetime "date"
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -26,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20101003172516) do
     t.string   "searchable_field"
     t.string   "searchable_field_type"
     t.integer  "searchable_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "second_models", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

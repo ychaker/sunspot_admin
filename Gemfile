@@ -23,7 +23,6 @@ gem 'mysql2'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'sunspot_rails', ">= 1.2.rc3"
 gem 'haml'
-gem 'nokogiri'
 gem "will_paginate", "~> 3.0.pre2"
 
 # Bundle gems for the local environment. Make sure to
