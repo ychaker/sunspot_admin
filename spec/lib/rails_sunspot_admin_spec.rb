@@ -1,5 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 `rake db:migrate`
+# `rake db:migrate:down VERSION=20101003172516`
+# 'rake db:migrate:up VERSION=20101003172516'
 
 describe RailsSunspotAdmin do
   class Dummy < ActiveRecord::Base

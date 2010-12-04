@@ -1,0 +1,30 @@
+<h2>INDEX</h2>
+<% if @searchable && @solr_running && @unprepared.flatten.blank? && @prepared.flatten.blank? %>
+	<%= link_to raw("
+	<div class='index_button_base_border'>
+		<div class='index_button_base_gradient'>
+			<div class='index_button_rim_pressed'>
+				<div class='index_button_fill_pressed'></div><!--index_button_fill_pressed-->
+			</div><!--index_button_rim_pressed-->
+		</div><!--index_button_base_border-->
+	</div> <!--index_button_base_gradient-->
+	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true  %>
+<% elsif @solr_running && (@unprepared.blank? || @prepared.blank?) %>
+	<%= link_to raw("
+	<div class='index_button_base_border'>
+		<div class='index_button_base_gradient'>
+			<div class='index_button_rim'>
+				<div class='index_button_fill'></div><!--index_button_fill-->
+			</div><!--index_button_rim-->
+		</div><!--index_button_base_border-->
+	</div> <!--index_button_base_gradient-->
+	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true  %>
+<% else %>
+	<div class='index_button_base_border'>
+		<div class='index_button_base_gradient'>
+			<div class='index_button_rim'>
+				<div class='index_button_fill'></div><!--index_button_fill-->
+			</div><!--index_button_rim-->
+		</div><!--index_button_base_border-->
+	</div> <!--index_button_base_gradient-->
+<% end %>

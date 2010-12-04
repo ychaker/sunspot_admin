@@ -12,6 +12,15 @@
 
 ActiveRecord::Schema.define(:version => 20101122233405) do
 
+  create_table "dummies", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "age"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "first_models", :force => true do |t|
     t.string   "name"
     t.text     "description"

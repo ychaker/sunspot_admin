@@ -4,3 +4,4 @@ log/*.log
 log/*.log.*
 tmp/**/*
 solr/data/*
+.DS_Store

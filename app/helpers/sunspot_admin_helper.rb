@@ -20,11 +20,11 @@ module SunspotAdminHelper
 					</div><!--add_button_center_border_on-->
 				</div><!--add_button_on-->
 			</div> <!--add_button-->
-			"), :action => :remove_searchable_item, :controller => :sunspot_admin, 
+			"), url_for(:action => :remove_searchable_item, :controller => :sunspot_admin, 
 			:attribute => {
 				:searchable_model => item[:name],
 				:searchable_field => item[:attribute]
-			}
+			}), :remote => true
 		else
 		  link_to raw("
 			<div class='add_button #{added}'>
@@ -36,13 +36,13 @@ module SunspotAdminHelper
 					</div><!--add_button_center_border_on-->
 				</div><!--add_button_on-->
 			</div> <!--add_button-->
-			"), :action => :add_searchable_item, :controller => :sunspot_admin, 
+			"), url_for(:action => :add_searchable_item, :controller => :sunspot_admin, 
 			:attribute => { 
 				:searchable_model => item[:name],
 				:searchable_field => item[:attribute],
 				:searchable_field_type => item[:type],
 				:searchable_status => SearchableItem::NOTPREPARED
-			}
+			}), :remote => true
 		end
 	end
 	
@@ -56,11 +56,15 @@ module SunspotAdminHelper
   
   def display_item_display item, indexed
     display = "#{item[:attribute].humanize}:#{item[:type]}"
-    display = display.length > 18 ? display[0..14] << "..." : display
+    display = display.length > 20 ? display[0..16] << "..." : display
 		"<div class='#{indexed}_item'>
 			<div class='item_display'>
 				<div class='text'><strong>#{display.underscore.gsub(/ /, '_')}</strong></div>
 			</div><!--item display-->
 		</div> <!--indexed-->"
+  end
+  
+  def item_div_id item
+    "#{idify_model_name(item[:name])}=#{item[:attribute]}"
   end
 end

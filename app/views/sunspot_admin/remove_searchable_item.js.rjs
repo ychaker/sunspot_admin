@@ -1,0 +1,22 @@
+item = @item
+page.replace_html item_div_id(item), :partial => "item", :locals => { 
+	:item => item,
+	:added => @added,
+	:indexed => @indexed
+}
+
+page.replace_html 'server-status', :partial => "server_status", :locals => { 
+	:solr_running => @solr_running,
+	:searchable => @searchable,
+	:unprepared => @unprepared, 
+	:prepared => @prepared, 
+	:indexed => @indexed 
+}
+
+page.replace_html 'reindex', :partial => "reindex", :locals => { 
+	:solr_running => @solr_running,
+	:searchable => @searchable,
+	:unprepared => @unprepared, 
+	:prepared => @prepared, 
+	:indexed => @indexed 
+}

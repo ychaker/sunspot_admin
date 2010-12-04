@@ -1,0 +1,6 @@
+<% added_check = @added.inject(false) { |is_added, each| is_added || each.is_model_and_attribute(item[:name], item[:attribute]) } %>
+<% indexed = @indexed.inject(false) { |is_indexed, each| is_indexed || each.is_model_and_attribute(item[:name], item[:attribute]) } == true ? "indexed" : "unindexed" %>
+
+<%=raw display_item_add_button item, added_check %>
+<%=raw display_item_indexed_light item, indexed %>
+<%=raw display_item_display item, indexed %>

@@ -1,0 +1,37 @@
+<h2>SERVER STATUS</h2>
+
+<div class='display_base_border'>
+	<div class='display_base_gradient'>
+<% if !@searchable && !@solr_running%>
+	<div class="search_off">
+		<div class="item_display">
+			<div class="text"><strong>Search not enabled!<br />Select attributes &<br />turn Solr on</strong></div>
+		</div><!--item display-->
+	</div> <!--search_off-->
+<% elsif !@solr_running%>
+	<div class="search_off">
+		<div class="item_display">
+			<div class="text"><strong>Search not enabled!<br />Turn Solr on</strong></div>
+		</div><!--item display-->
+	</div> <!--search_off-->
+<% elsif ( !@unprepared.blank? && @unprepared.count > 0) || ( !@prepared.blank? && @prepared.count > 0) %>
+	<div class="search_off">
+		<div class="item_display">
+			<div class="text"><strong>Search not enabled!<br />Index your database</strong></div>
+		</div><!--item display-->
+	</div> <!--search_off-->
+<% elsif !@indexed.blank? && @indexed.count > 0 %>
+	<div class="search_on">
+		<div class="item_display">
+			<div class="text"><strong>Everything is A OK!<br/>Start searching...</strong></div>
+		</div><!--item display-->
+	</div> <!--search_on-->
+<% else %>
+	<div class="search_off">
+		<div class="item_display">
+			<div class="text"><strong>Search not enabled!<br />Select attributes<br />for indexing</strong></div>
+		</div><!--item display-->
+	</div> <!--search_off-->
+<% end %>
+	</div>
+</div>

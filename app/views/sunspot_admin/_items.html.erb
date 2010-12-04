@@ -1,0 +1,24 @@
+<% @models.each_pair do |name, value| %>
+	<div class ='model'>
+		<h2><%= link_to_function display_model_name(name), "$('#{idify_model_name(name)}-items').toggle()" %></h2>
+		<div id="<%= idify_model_name(name) %>-items">
+			<% i = 0 %>
+			<% value[:attributes].each_pair do |attribute, type| %>
+				<% item = { :name => name, :attribute => attribute, :type => type } %>
+				<% column = ((i % 2) == 0 ) ? 'first_column': 'second_column' %>
+				<% i += 1 %>
+				<div class='item <%= column %>'>
+					<div id='<%= item_div_id item %>'>
+						<%= render :partial => 'item', :locals => { 
+							:item => item,
+							:added => @added,
+							:indexed => @indexed 
+							} 
+						%>
+					</div>
+				</div>
+			<% end unless value[:attributes].blank? %>
+		</div>
+		<div class='clear'><br /></div>
+	</div>
+<% end unless @models.blank? %>

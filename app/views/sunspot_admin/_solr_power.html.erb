@@ -1,0 +1,40 @@
+<h2>POWER</h2>
+<% if @solr_running %>
+	<%= link_to raw("
+	<div class='power_button_base_border'>
+		<div class='power_button_base_gradient'>
+			<div class='power_button_inner_glow'>
+				<div class='power_button_top'>
+						<div class='power_button_light_rim_on'>
+							<div class='power_button_light_on'>
+							</div><!--power_button_light_on-->
+						</div><!--power_button_light_rim_on-->
+				</div><!--power_button_top-->
+				<div class='power_button_bottom'>
+				</div><!--power_button_bottom-->
+				<div class='power_button_flare'>
+				</div><!--power_button_flare-->
+			</div><!--power_button_inner_glow-->
+		</div><!--power_button_base_gradient-->
+	</div> <!--power_button_base_border-->
+	"), url_for(:action => :stop_solr, :controller => :sunspot_admin), :remote => true %>
+<% else %>
+	<%= link_to raw("
+	<div class='power_button_base_border'>
+		<div class='power_button_base_gradient'>
+			<div class='power_button_inner_glow_off'>
+				<div class='power_button_top_off'>
+				</div><!--power_button_top_off-->
+				<div class='power_button_bottom_off'>
+				</div><!--power_button_bottom_off-->
+				<div class='power_button_flare_off'>
+				</div><!--power_button_flare_off-->
+				<div class='power_button_light_rim_off'>
+					<div class='power_button_light_off'>
+					</div><!--power_button_light_off-->
+				</div><!--power_button_light_rim_off-->
+			</div><!--power_button_inner_glow_off-->
+		</div><!--power_button_base_gradient-->
+	</div> <!--power_button_base_border-->
+	"), url_for(:action => :start_solr, :controller => :sunspot_admin), :remote => true %>
+<% end %>

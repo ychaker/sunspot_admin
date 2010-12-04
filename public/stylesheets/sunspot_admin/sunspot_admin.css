@@ -7,12 +7,13 @@
 	width: 720px;
 	height: 100%;
 	margin: 0px auto;
-	font-family: 'Lucida Grande', verdana,arial,helvetica,sans-serif;
+	font-family: 'Candara';
+	background-image: url(/images/sunspot_admin/brushed-metal-pattern.png);
 }
 #sunspot-admin header {
 	background: url(/images/sunspot_admin/header-wooden-pannel.png);
 	width: 100%;
-	height: 70px;
+	height: 60px;
 	display: block;
 	margin: 0px auto;
 	clear: both;
@@ -21,24 +22,23 @@
 	text-indent: -999em;
 	background: url(/images/sunspot_admin/admin-logo.png) no-repeat;
 	width: 150px;
-	height: 70px;
+	height: 60px;
 	float: left;
 }
 #sunspot-admin header #ram {
 	float: right;
-	width: 130;
-	height: 44px;
-	margin: 15px 10px 10px;
+	width: 90px;
+	height: 30px;
+	margin: 18px 15px 12px 15px;
 }
 #sunspot-admin footer {
-	background: url(/images/sunspot_admin/metal-background.png) repeat-x;
 	width: 100%;
-	height: 160px;
+	height: 180px;
 	position: relative;
 }
 #sunspot-admin footer #vent {
 	background: url(/images/sunspot_admin/bottom-vent.png) no-repeat;
-	width: 600px;
+	width: 658px;
 	margin: 0 auto;
 	height: 100%;
 }
@@ -46,51 +46,53 @@
 	color: gray;
 	position: absolute;
 	right: 5%;
-	top: 80%;
+	top: 85%;
 }
 /* END GENERAL */
 /* BEGIN STATUS */
 #sunspot-admin #status {
-	background: url(/images/sunspot_admin/carbon-fiber-pattern.png) repeat;
-	height: 140px;
-	padding: 10px;
-	padding-bottom: 0;
+/*	background: url(/images/sunspot_admin/carbon-fiber-pattern.png) repeat;*/
+	background: url(/images/sunspot_admin/carbon-fiber-720.png);
+	height: 135px;
+	padding: 10px 15px;
 }
-#sunspot-admin #solr-server,
+#sunspot-admin #solr-power,
 #sunspot-admin #server-status,
-#sunspot-admin #index {
+#sunspot-admin #reindex,
+#sunspot-admin #fan-pod {
 	display: block;
 	float: left;
-	height: 90px;
-	padding: 10px;
-	margin: 5px;
+	height: 110px;
+	padding: 5px;
+	margin: 6px;
 	color: #b4b6b5;
 	border: 2px #5a5b5c solid;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	text-align: center;
 }
-#sunspot-admin #solr-server h2,
+#sunspot-admin #solr-power h2,
 #sunspot-admin #server-status h2,
-#sunspot-admin #index h2 {
+#sunspot-admin #reindex h2 {
 	text-transform: uppercase;
+	font-weight: normal;
 	font-size: .70em;
 	margin: 0 auto;
 }
 
 /* BEGIN POWER BUTTON */
-#sunspot-admin #solr-server {
+#sunspot-admin #solr-power {
 	width: 50px;
 }
 #sunspot-admin .power_button_base_border {
 	float: left;
 	background-color: black;
-	width: 34px;
-	height: 58px;
+	width: 44px;
+	height: 80px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	position: relative;
-	margin: 5px 7px;
+	margin: 9px 3px;
 	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
 	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
 	box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
@@ -98,8 +100,8 @@
 #sunspot-admin .power_button_base_gradient {
 	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
 	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 28px;
-	height: 52px;
+	width: 38px;
+	height: 75px;
 	position: absolute;
 	left: 2px;
 	top: 2px;
@@ -113,8 +115,8 @@
 #sunspot-admin .power_button_inner_glow {
 	background: -webkit-gradient(linear, 62% 81%, 62% 0%, from(#3e0404), to(red));
 	background: -moz-linear-gradient(0% 62% 90deg,#3E0404, red);
-	width: 26px;
-	height: 51px;
+	width: 36px;
+	height: 73px;
 	position: absolute;
 	left: 1px;
 	top: 1px;
@@ -123,8 +125,8 @@
 }
 #sunspot-admin .power_button_inner_glow_off {
 	background: black;
-	width: 26px;
-	height: 51px;
+	width: 36px;
+	height: 74px;
 	position: absolute;
 	left: 1px;
 	top: 1px;
@@ -134,40 +136,40 @@
 #sunspot-admin .power_button_top {
 	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
 	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 24px;
-	height: 40px;
+	width: 34px;
+	height: 71px;
 	position: absolute;
-	left:1px;
-	top:1px;
+	left: 1px;
+	top: 1px;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
 }
 #sunspot-admin .power_button_top_off {
 	background: black;
-	width: 24px;
-	height:8px;
-	position:absolute;
-	left:1px;
-	top:1px;
+	width: 34px;
+	height: 8px;
+	position: absolute;
+	left: 1px;
+	top: 1px;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
 }
 #sunspot-admin .power_button_bottom {
-	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
-	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 24px;
-	height: 8px;
+	background: -webkit-gradient(linear, 0% 100%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 100% 90deg,#26292B, #0E0B0A);
+	width: 34px;
+	height: 13px;
 	position: absolute;
 	left: 1px;
-	top: 42px;
+	top: 58px;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
 }
 #sunspot-admin .power_button_bottom_off {
 	background: -webkit-gradient(linear, 0% 95%, 0% 5%, from(#26292B), to(#0E0B0A));
 	background: -moz-linear-gradient(0% 95% 90deg, #26292B, #0E0B0A);
-	width: 24px;
-	height: 40px;
+	width: 34px;
+	height: 63px;
 	position: absolute;
 	left: 1px;
 	top: 10px;
@@ -176,19 +178,19 @@
 }
 #sunspot-admin .power_button_flare {
 	background: -webkit-gradient(radial, 12 2, 0, 12 2, 20, from(#363332), to(#0a0707));
-	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 24px;
-	height: 2px;
+	background: -moz-radial-gradient(50% 50% 90deg,#26292B, #0E0B0A);
+	width: 34px;
+	height: 3px;
 	position: absolute;
 	left: 1px;
-	top: 40px;
+	top: 56px;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
 }
 #sunspot-admin .power_button_flare_off {
 	background: -webkit-gradient(radial, 12 2, 0, 12 2, 20, from(#363332), to(#0a0707));
-	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 24px;
+	background: -moz-radial-gradient(50% 50% 90deg,#26292B, #0E0B0A);
+	width: 34px;
 	height: 2px;
 	position: absolute;
 	left: 1px;
@@ -202,7 +204,7 @@
 	width: 12px;
 	height: 12px;
 	position: absolute;
-	left: 6px;
+	left: 11px;
 	top: 6px;
 	border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -211,12 +213,12 @@
 	box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
 }
 #sunspot-admin .power_button_light_rim_off {
-	background: -webkit-gradient(linear, 0% 0%, 0% 68%, from(#130D0C), to(#363433));
-	background: -moz-linear-gradient(0% 0% 0deg,#130D0C, #363433);
-	width: 12px;
-	height: 12px;
+	background: -webkit-gradient(linear, 50% 50%, 50% 68%, from(#130D0C), to(#363433));
+	background: -moz-linear-gradient(50% 50% -90deg,#130D0C, #363433);
+	width: 14px;
+	height: 14px;
 	position: absolute;
-	left: 7px;
+	left: 11px;
 	top: 14px;
 	border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -236,12 +238,12 @@
 	box-shadow: 0px 0px 10px rgba(250,0,0,0.9);
 }
 #sunspot-admin .power_button_light_off {
-	background: -webkit-gradient(radial, 5 5, 5, 5 5, 1, from(#320003), to(#FFFFFF), color-stop(.8,#590000));
+	background: -webkit-gradient(radial, 5 5, 5, 6 6, 1, from(#320003), to(#FFFFFF), color-stop(.8,#590000));
 	background: -moz-radial-gradient(50% 50% 0deg,circle contain, #FFFFFF, #590000, #320003 90%);
-	width: 10px;
-	height: 10px;
+	width: 12px;
+	height: 12px;
 	position: absolute;
-	left: 1px;
+	left: 0.75px;
 	top: 1px;
 	border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -251,15 +253,43 @@
 /* BEGIN ITEM DISPLAY */
 #sunspot-admin #server-status {
 	text-transform: uppercase;
+	width: 320px;
+}
+#sunspot-admin #server-status .display_base_border {
+	background-color: black;
+	margin: 0 5px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	position: relative;
+	-moz-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+	box-shadow: 0px 1px 2px rgba(0,0,0,0.9),0px 3px 2px rgba(44,44,44,0.4);
+}
+#sunspot-admin #server-status .display_base_gradient {
+	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
+	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
+	position: absolute;
+	left: 2px;
+	top: 8px;
+	border-top: 1px solid #3d3b3a;
+	border-right: 1px solid #1b1d1e;
+	border-left: 1px solid #1b1d1e;
+	border-bottom: 1px solid #1b1d1e;
+	border-radius: 2px;
+	-moz-border-radius: 2px;	
 }
 #sunspot-admin #server-status .text {
-	font-size: 12px;
+	font-size: 14px;
+	line-height: 22px;
+	margin-left: 4px;
+	margin-top: 3px;
+	position: absolute;
 }
 #sunspot-admin .search_on,
 #sunspot-admin .search_off,
 #sunspot-admin .indexed_item,
 #sunspot-admin .unindexed_item {
-	float:left;
+	float: left;
 	margin: 7px 5px;
 	border-radius: 1px;
 	-moz-border-radius: 1px;
@@ -273,12 +303,12 @@
 #sunspot-admin .search_on,
 #sunspot-admin .search_off {
 	width: 300px;
-	height: 60px;
-	border-bottom: 1px solid black;
+	height: 74px;
+	margin: 3px;
 }
 #sunspot-admin .indexed_item,
 #sunspot-admin .unindexed_item {
-	width: 165px;
+	width: 190px;
 	height: 23px;
 	border-bottom: 1px solid #e8e7e6;
 }
@@ -301,13 +331,13 @@
 #sunspot-admin .search_on .item_display,
 #sunspot-admin .search_off .item_display {
 	width: 294px;
-	height: 56px;
+	height: 70px;
 	left: 2px;
 	top: 2px;
 }
 #sunspot-admin .indexed_item .item_display,
 #sunspot-admin .unindexed_item .item_display {
-	width: 163px;
+	width: 186px;
 	height: 22px;
 	left: 1px;
 	top: 1px;
@@ -325,9 +355,10 @@
 /* BEGIN INDEX BUTTON */
 #sunspot-admin .index_button_base_border {
 	float: left;
+	top: 4px;
 	background-color: black;
-	width: 48px;
-	height: 58px;
+	width: 80px;
+	height: 80px;
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	position: relative;
@@ -339,8 +370,8 @@
 #sunspot-admin .index_button_base_gradient {
 	background: -webkit-gradient(linear, 0% 90%, 0% 53%, from(#26292B), to(#0E0B0A));
 	background: -moz-linear-gradient(0% 78% 90deg,#26292B, #0E0B0A);
-	width: 42px;
-	height: 52px;
+	width: 74px;
+	height: 75px;
 	position:absolute;
 	left:2px;
 	top:2px;
@@ -351,73 +382,98 @@
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 }
+#sunspot-admin .index_button_rim,
+#sunspot-admin .index_button_rim_pressed {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 11px;
+	top: 11px;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+}
 #sunspot-admin .index_button_rim {
 	background: -webkit-gradient(linear, 0% 0%, 0% 87%, from(#16a800), to(#084000), color-stop(.6,#246A01));
 	background: -moz-linear-gradient(19% 75% 90deg,#084000, #16A800);
-	width: 30px;
-	height: 30px;
-	position: absolute;
-	left: 6.25px;
-	top: 10px;
-	border-radius: 15px;
-	-moz-border-radius: 15px;
 	-moz-box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
 	-webkit-box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
 	box-shadow: 0px 4px 2px rgba(0,0,0,1.0),0px 3px 4px rgba(44,44,44,0.7);
 }
 #sunspot-admin .index_button_fill {
 	background: -webkit-gradient(radial, 15 20, 5, 14 30, 30, from(#1BEA00), to(#0D8700));
-	background: -moz-linear-gradient(19% 75% 90deg,#1BEA00, #0D8700);
-	width: 26px;
-	height: 26px;
+	background: -moz-radial-gradient(19% 75% 90deg,#1BEA00, #0D8700);
+	width: 44px;
+	height: 44px;
 	position: absolute;
-	border-radius: 13px;
-	-moz-border-radius: 13px;
-	left: 2.25px;
-	top: 2px;
+	border-radius: 44px;
+	-moz-border-radius: 44px;
+	left: 3px;
+	top: 3px;
 	box-shadow: 0px 1px 1px #138500;
 	-webkit-box-shadow: inset 0px 0px 2px #138500;
 }
 #sunspot-admin .index_button_rim_pressed {
 	background: green;
 	background: green;
-	width: 28px;
-	height: 28px;
-	position: absolute;
-	left: 6.25px;
-	top: 10px;
-	border-radius: 15px;
-	border:1px solid #befbc2;
-	-moz-border-radius: 15px;
+	border: 1px solid #befbc2;
 	-moz-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
 	-webkit-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
 	box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
 }
 #sunspot-admin .index_button_fill_pressed {
-	background: -webkit-gradient(radial, 15 20, 5, 14 30, 30, from(#0D8700), to(#1BEA00));
-	background: -moz-linear-gradient(19% 75% 90deg,#1BEA00, #0D8700);
-	width: 26px;
-	height: 26px;
+	background: -webkit-gradient(radial, 25 25, 1, 21 30, 30, from(#0D8700), to(#1BEA00));
+	background: -moz-radial-gradient(25% 25% 90deg,#0D8700, #1BEA00);
+	width: 48px;
+	height: 48px;
 	position: absolute;
-	border-radius: 13px;
-	-moz-border-radius: 13px;
+	border-radius: 48px;
+	-moz-border-radius: 48px;
 	left: 1px;
 	top: 1px;
 	-webkit-box-shadow: 0px 0px 10px rgba(0,250,0,0.9), inset 0px 0px 10px rgba(200,250,200,1.0);
 }
 /* END INDEX BUTTON */
+
+/* BEGIN FAN */
+#sunspot-admin #fan-pod {
+	width: 140px;
+	height: 120px;
+	padding: 0px;
+	position: relative;
+}
+#sunspot-admin #fan-pod #fan-bg {
+	width: 140px;
+	height: 120px;
+	z-index: 1;
+	position: absolute;
+}
+#sunspot-admin #fan-pod #fan {
+	width: 140px;
+	height: 120px;
+	z-index: 2;
+	position: absolute;
+}
+#sunspot-admin #fan-pod #fan-grill {
+	width: 147px;
+	height: 127px;
+	z-index: 3;
+	position: absolute;
+	height: 125px;
+  left: -3px;
+  top: -3px;
+}
+/* END FAN */
 /* END STATUS */
 
 /* BEGIN MODELS */
 #sunspot-admin #items {
-	background: url(/images/sunspot_admin/metal-background.png) repeat;
 	padding: 10px;
 }
 #sunspot-admin #items a {
 	text-decoration: none;
 }
 #sunspot-admin .model {
-	width: 600px;
+	width: 670px;
 	padding: 0;
 	margin: 20px auto;
 	display: block;
@@ -429,6 +485,7 @@
 #sunspot-admin .model h2 a {
 	text-transform: uppercase;
 	font-size: 1em;
+	font-weight: normal;
 	line-height: 1.6em;
 	margin: 0 auto;
 	color: white;
@@ -572,12 +629,11 @@
 /* END INDEXED LIGHT */
 
 #sunspot-admin .item {
-	width: 273px;
-	margin: 0 10px;
+	width: 300px;
+	margin: 0 15px;
 }
 #sunspot-admin #items .first_column {
 	float: left;
-	margin-left: 20px;
 }
 #sunspot-admin #items .second_column {
 	float: right;

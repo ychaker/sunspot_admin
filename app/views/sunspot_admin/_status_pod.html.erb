@@ -1,0 +1,41 @@
+
+<div id='solr-power'>
+	<%= render :partial => 'solr_power', :locals => { 
+		:solr_running => @solr_running,
+		:searchable => @searchable,
+		:unprepared => @unprepared, 
+		:prepared => @prepared, 
+		:indexed => @indexed 
+		} 
+	%>
+</div>
+<div id='server-status'>
+	<%= render :partial => 'server_status', :locals => { 
+		:solr_running => @solr_running,
+		:searchable => @searchable,
+		:unprepared => @unprepared, 
+		:prepared => @prepared, 
+		:indexed => @indexed 
+		} 
+	%>
+</div>
+<div id='reindex'>
+	<%= render :partial => 'reindex', :locals => { 
+		:solr_running => @solr_running,
+		:searchable => @searchable,
+		:unprepared => @unprepared, 
+		:prepared => @prepared, 
+		:indexed => @indexed 
+		} 
+	%>
+</div>
+<div id='fan-pod'>
+	<%= render :partial => 'fan_pod', :locals => { 
+		:solr_running => @solr_running,
+		:searchable => @searchable,
+		:unprepared => @unprepared, 
+		:prepared => @prepared, 
+		:indexed => @indexed 
+		} 
+	%>
+</div>
