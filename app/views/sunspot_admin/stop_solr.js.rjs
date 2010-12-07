@@ -21,3 +21,11 @@ page.replace_html 'reindex', :partial => "reindex", :locals => {
 	:prepared => @prepared, 
 	:indexed => @indexed 
 }
+
+page.show 'sparks'
+
+page.delay(0.25) do
+  page.hide 'spinning'
+  page.show 'still'
+  page.hide 'sparks'
+end

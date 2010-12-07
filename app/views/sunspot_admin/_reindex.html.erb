@@ -8,7 +8,7 @@
 			</div><!--index_button_rim_pressed-->
 		</div><!--index_button_base_border-->
 	</div> <!--index_button_base_gradient-->
-	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true  %>
+	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true, :onclick => 'rotateFan();'  %>
 <% elsif @solr_running && (@unprepared.blank? || @prepared.blank?) %>
 	<%= link_to raw("
 	<div class='index_button_base_border'>
@@ -18,7 +18,7 @@
 			</div><!--index_button_rim-->
 		</div><!--index_button_base_border-->
 	</div> <!--index_button_base_gradient-->
-	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true  %>
+	"), url_for(:action => :reindex, :controller => :sunspot_admin), :remote => true, :onclick => 'rotateFan();'  %>
 <% else %>
 	<div class='index_button_base_border'>
 		<div class='index_button_base_gradient'>

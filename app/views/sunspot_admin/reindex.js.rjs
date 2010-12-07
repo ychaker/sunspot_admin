@@ -19,3 +19,11 @@ page.replace_html 'items', :partial => "items", :locals => {
 	:added => @added,
 	:indexed => @indexed
 }
+
+page.show 'sparks'
+
+page.delay(0.25) do
+  page.hide 'spinning'
+  page.show 'still'
+  page.hide 'sparks'
+end

@@ -70,6 +70,7 @@ class SunspotAdminController < ApplicationController
     Sunspot::Rails::Server.new.start
     while(starting)
     end
+    sleep(10)
     ActiveRecord::Base.connection.reconnect! # Getting a mysql has gone away error for some reason!
     respond_to do |format|
       format.html { redirect_to(:action => :index) }

@@ -1,6 +1,9 @@
 <% content_for :stylesheets do %>
 	<%= stylesheet_link_tag "sunspot_admin/sunspot_admin" %>
 <% end %>
+<% content_for :javascripts do %>
+	<%= javascript_include_tag "sunspot_admin/sunspot_admin" %>
+<% end %>
 
 <% content_for :content do %>
 	<section id="sunspot-admin">

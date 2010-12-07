@@ -33,12 +33,12 @@
 }
 #sunspot-admin footer {
 	width: 100%;
-	height: 180px;
+	height: 220px;
 	position: relative;
 }
 #sunspot-admin footer #vent {
 	background: url(/images/sunspot_admin/bottom-vent.png) no-repeat;
-	width: 658px;
+	width: 720px;
 	margin: 0 auto;
 	height: 100%;
 }
@@ -447,16 +447,38 @@
 	z-index: 1;
 	position: absolute;
 }
+#sunspot-admin #fan-pod #fan-bg #no-sparks,
+#sunspot-admin #fan-pod #fan-bg #sparks {
+	position: absolute;
+	left: 0%;
+}
+#sunspot-admin #fan-pod #fan-bg #no-sparks {
+	z-index: 1;
+}
+#sunspot-admin #fan-pod #fan-bg #sparks {
+	z-index: 2;
+}
 #sunspot-admin #fan-pod #fan {
 	width: 140px;
 	height: 120px;
 	z-index: 2;
 	position: absolute;
 }
+#sunspot-admin #fan-pod #fan #still,
+#sunspot-admin #fan-pod #fan #spinning {
+	position: absolute;
+	left: 7%;
+}
+#sunspot-admin #fan-pod #fan #still {
+	z-index: 1;
+}
+#sunspot-admin #fan-pod #fan #spinning {
+	z-index: 2;
+}
 #sunspot-admin #fan-pod #fan-grill {
 	width: 147px;
 	height: 127px;
-	z-index: 3;
+	z-index: 4;
 	position: absolute;
 	height: 125px;
   left: -3px;

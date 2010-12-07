@@ -17,7 +17,7 @@
 			</div><!--power_button_inner_glow-->
 		</div><!--power_button_base_gradient-->
 	</div> <!--power_button_base_border-->
-	"), url_for(:action => :stop_solr, :controller => :sunspot_admin), :remote => true %>
+	"), url_for(:action => :stop_solr, :controller => :sunspot_admin), :remote => true, :onclick => 'rotateFan();' %>
 <% else %>
 	<%= link_to raw("
 	<div class='power_button_base_border'>
@@ -36,5 +36,5 @@
 			</div><!--power_button_inner_glow_off-->
 		</div><!--power_button_base_gradient-->
 	</div> <!--power_button_base_border-->
-	"), url_for(:action => :start_solr, :controller => :sunspot_admin), :remote => true %>
+	"), url_for(:action => :start_solr, :controller => :sunspot_admin), :remote => true, :onclick => 'rotateFan();' %>
 <% end %>
